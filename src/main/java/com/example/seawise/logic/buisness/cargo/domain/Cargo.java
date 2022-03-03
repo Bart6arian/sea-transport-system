@@ -1,5 +1,6 @@
 package com.example.seawise.logic.buisness.cargo.domain;
 
+import com.example.seawise.logic.buisness.ship.domain.CargoSector;
 import com.example.seawise.logic.buisness.ship.domain.Ship;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -20,17 +21,9 @@ public class Cargo {
     private Long id;
 
     private String name;
-
-    @Column(name = "weight[kg]")
     private double weight;
-
-    @Column(name = "width[m]")
     private double width;
-
-    @Column(name = "height[m]")
     private double height;
-
-    @Column(name = "depth[m]")
     private double depth;
 
     private boolean registered;
@@ -41,8 +34,8 @@ public class Cargo {
     @Column(name = "cargo_type")
     private CargoType type;
 
-    /*@ManyToOne
-    private Ship ship;*/
+    @ManyToOne(fetch = FetchType.LAZY)
+    private CargoSector sector;
 
     private double declaredValue;
 }

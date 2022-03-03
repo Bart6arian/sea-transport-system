@@ -15,7 +15,7 @@ import java.util.List;
 @RequiredArgsConstructor
 @RequestMapping("/api/ship")
 @CrossOrigin("*")
-class ShipController {
+public class ShipController {
 
     private final ShipService service;
     private final ShipMapper mapper;
