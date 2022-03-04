@@ -9,6 +9,8 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity(name = "ships")
 @Data
@@ -39,8 +41,12 @@ public class Ship {
     @Column(name = "weight_without_cargo")
     private double weightRaw;
 
-    /*@OneToMany
-    private List<Cargo> cargoList;*/
+    @OneToMany(
+            mappedBy = "ship",
+            cascade = CascadeType.PERSIST,
+            fetch = FetchType.LAZY
+    )
+    private Set<CargoSector> sectors = new HashSet<>();
 
     public String createShipNumber() {
         return shipName.substring(0,4)

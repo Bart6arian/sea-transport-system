@@ -46,4 +46,10 @@ public class CargoMapper {
                 .collect(Collectors.toList());
     }
 
+    public List<Cargo> mapToCargoList(List<CargoDto> cargoDtos) {
+        return cargoDtos.stream()
+                .map(this::mapToCargo)
+                .collect(Collectors.toList());
+    }
+
 }

@@ -20,16 +20,13 @@ public class CargoSector {
     private Long id;
     private SectorMark mark;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Ship ship;
+
     @OneToMany(
-            cascade = CascadeType.ALL
+            cascade = CascadeType.ALL,
+            fetch = FetchType.LAZY
     )
     private List<Cargo> cargos = new ArrayList<>();
 
-    public void addToCargos(Cargo cargo) {
-        cargos.add(cargo);
-    }
-
-    public void deleteFromCargos(Cargo cargo) {
-        cargos.remove(cargo);
-    }
 }

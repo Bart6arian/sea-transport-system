@@ -2,13 +2,17 @@ package com.example.seawise.logic.buisness.ship.mapper;
 
 import com.example.seawise.logic.buisness.ship.domain.Ship;
 import com.example.seawise.logic.buisness.ship.domain.ShipDto;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
+@RequiredArgsConstructor
 public class ShipMapper {
+
+    private final CargoSectorMapper mapper;
 
     public ShipDto mapToShipDto(final Ship ship) {
         return new ShipDto(
@@ -21,7 +25,8 @@ public class ShipMapper {
                 ship.getLength(),
                 ship.getWidth(),
                 ship.getArea(),
-                ship.getWeightRaw()
+                ship.getWeightRaw(),
+                mapper.mapToCargoSectorDtoSet(ship.getSectors())
         );
     }
 
@@ -37,6 +42,7 @@ public class ShipMapper {
                 .width(dto.getWidth())
                 .area(dto.getArea())
                 .weightRaw(dto.getWeightRaw())
+                .sectors(mapper.mapToCargoSectorSet(dto.getSectorSetDto()))
                 .build();
     }
 
