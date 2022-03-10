@@ -34,8 +34,5 @@ public class Cargo {
     @Column(name = "cargo_type")
     private CargoType type;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    private CargoSector sector;
-
     private double declaredValue;
 }

@@ -19,7 +19,6 @@ public class CargoSectorMapper {
         return new CargoSectorDto(
                 sector.getId(),
                 sector.getMark(),
-                sector.getShip(),
                 mapper.mapToCargoDtoList(sector.getCargos())
         );
     }
@@ -28,7 +27,6 @@ public class CargoSectorMapper {
         return new CargoSector(
                 dto.getId(),
                 dto.getMark(),
-                dto.getShip(),
                 mapper.mapToCargoList(dto.getCargoDtoList())
         );
     }

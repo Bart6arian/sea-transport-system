@@ -20,9 +20,6 @@ public class CargoSector {
     private Long id;
     private SectorMark mark;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    private Ship ship;
-
     @OneToMany(
             cascade = CascadeType.ALL,
             fetch = FetchType.LAZY

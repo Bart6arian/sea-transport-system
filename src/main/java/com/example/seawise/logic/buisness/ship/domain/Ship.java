@@ -1,6 +1,5 @@
 package com.example.seawise.logic.buisness.ship.domain;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -36,7 +35,7 @@ public class Ship {
     private double length;
     private double width;
 
-    private double area = length * width;
+    private double area;
 
     @Column(name = "weight_without_cargo")
     private double weightRaw;

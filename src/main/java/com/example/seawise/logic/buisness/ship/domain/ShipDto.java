@@ -1,6 +1,5 @@
 package com.example.seawise.logic.buisness.ship.domain;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.*;
 
 import java.time.LocalDate;

@@ -14,6 +14,5 @@ public class CargoSectorDto {
 
     private Long id;
     private SectorMark mark;
-    private Ship ship;
     private List<CargoDto> cargoDtoList;
 }
