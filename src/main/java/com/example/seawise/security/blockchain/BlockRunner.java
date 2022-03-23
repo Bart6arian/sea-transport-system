@@ -21,6 +21,8 @@ public class BlockRunner {
 
     public static void main(String[] args) {
 
+        List<Block> chain = new ArrayList<>();
+
         List<Cargo> cargoList1 = new ArrayList<>();
         cargoList1.add(new Cargo(1L, "aasds", 243.2, 22.65, 14.3, 4.2, true, true, CargoType.TYPE_II, 2543.2));
         cargoList1.add(new Cargo(2L, "aas22ds", 303.2, 22.65, 17.3, 3.2, false, true, CargoType.ARMORY, 2543.2));
@@ -29,7 +31,7 @@ public class BlockRunner {
         Set<CargoSector> sectors = new HashSet<>();
         sectors.add(new CargoSector(1L, SectorMark.A, cargoList1));
 
-        Block block = new Block("4354",
+        Block block = new Block(null,
                 new Ship(
                 1L,
                 "Atlantis",
@@ -55,6 +57,37 @@ public class BlockRunner {
 
                 LocalDateTime.now());
 
-        System.out.println(block.getHash());
+        Block block1 = new Block(block.getHash(),
+                new Ship(
+                2L,
+                "Atlantis1",
+                LocalDate.of(2012, 12, 22),
+                LocalDateTime.now(),
+                ShipType.GAS,
+                true,
+                16.2,
+                5.6,
+                        16.2 * 5.6,
+                20000,
+                sectors),
+
+                new Destination(
+                        2L,
+                        "Sydney",
+                        new Port(
+                                1L,
+                                "Port two",
+                                false,
+                                "Australia",
+                                PortType.SEASHORE)),
+
+                LocalDateTime.now());
+
+
+        chain.add(block);
+        chain.add(block1);
+        for (Block b : chain) {
+            System.out.println(b.getHash());
+        }
     }
 }
