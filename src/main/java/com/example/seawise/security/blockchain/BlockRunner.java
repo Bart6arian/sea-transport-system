@@ -9,17 +9,16 @@ import com.example.seawise.logic.buisness.ship.domain.CargoSector;
 import com.example.seawise.logic.buisness.ship.domain.SectorMark;
 import com.example.seawise.logic.buisness.ship.domain.Ship;
 import com.example.seawise.logic.buisness.ship.domain.ShipType;
+import com.example.seawise.security.exceptions.BlockchainInterruptionException;
+import com.example.seawise.security.exceptions.IllegalBlockchainCondition;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 public class BlockRunner {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws BlockchainInterruptionException, IllegalBlockchainCondition {
 
         List<Block> chain = new ArrayList<>();
 
@@ -86,8 +85,21 @@ public class BlockRunner {
 
         chain.add(block);
         chain.add(block1);
-        for (Block b : chain) {
-            System.out.println(b.getHash());
+
+        if(Objects.equals(chain.get(1).getPreviousHash(), chain.get(0).getHash())) {
+            System.out.println("works fine");
         }
+
+        for (Block b2 : chain) {
+            System.out.println("hash: "+b2.getHash());
+            System.out.println("previous hash: "+b2.getPreviousHash());
+        }
+
+        Chain blockChainExample = new Chain(1L, chain);
+        blockChainExample.removeFromChain(block1);
+        System.out.println(blockChainExample.getBlockList().size());
+        blockChainExample.addToChain(block1);
+        System.out.println(blockChainExample.getBlockList().size());
+
     }
 }
