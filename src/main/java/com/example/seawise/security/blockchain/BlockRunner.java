@@ -18,7 +18,7 @@ import java.util.*;
 
 public class BlockRunner {
 
-    public static void main(String[] args) throws BlockchainInterruptionException, IllegalBlockchainCondition {
+    public static void main(String[] args) throws BlockchainInterruptionException, IllegalBlockchainCondition, InterruptedException {
 
         List<Block> chain = new ArrayList<>();
 
@@ -95,11 +95,15 @@ public class BlockRunner {
             System.out.println("previous hash: "+b2.getPreviousHash());
         }
 
-        Chain blockChainExample = new Chain(1L, chain);
+        Chain blockChainExample = new Chain(1L, chain, LocalDateTime.of(2022, 03, 22, 12, 33));
         blockChainExample.removeFromChain(block1);
         System.out.println(blockChainExample.getBlockList().size());
         blockChainExample.addToChain(block1);
         System.out.println(blockChainExample.getBlockList().size());
+        DatabaseUnit unit = new DatabaseUnit(1L, blockChainExample,
+                LocalDateTime.of(2022, 12, 22, 14, 12));
+
+        System.out.println("DB unit keyHash: "+unit.getUnitHash());
 
     }
 }

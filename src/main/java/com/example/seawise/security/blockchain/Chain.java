@@ -5,6 +5,7 @@ import com.example.seawise.security.exceptions.IllegalBlockchainCondition;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @AllArgsConstructor
@@ -13,10 +14,12 @@ public class Chain {
 
     private Long id;
     private List<Block> blockList;
+    private LocalDateTime modificationDate;
 
     public void addToChain(Block block) throws IllegalBlockchainCondition {
         if(isPreviousHashCorrect(block)) {
             blockList.add(block);
+            setModificationDate(LocalDateTime.now());
         } else
             throw new IllegalBlockchainCondition();
     }
@@ -24,8 +27,20 @@ public class Chain {
     public void removeFromChain(Block block) throws BlockchainInterruptionException {
         if(verifyPreviousBlock(block)) {
             blockList.remove(block);
+            setModificationDate(LocalDateTime.now());
         } else
             throw new BlockchainInterruptionException();
+    }
+
+    public Block findBlockByGivenHash(String hash) {
+        return blockList.stream()
+                .filter(b -> b.getHash().equals(hash))
+                .findFirst()
+                .orElse(null);
+    }
+
+    private void setModificationDate(LocalDateTime modificationDate) {
+        this.modificationDate = modificationDate;
     }
 
     //verify hash from pre-last block

@@ -33,7 +33,7 @@ public class Block {
                 destination.toString() +
                 timestamp.toString();
 
-        MessageDigest digest = null;
+        MessageDigest digest;
         byte[] bytes = null;
         try {
             digest = MessageDigest.getInstance("SHA-256");
@@ -41,11 +41,11 @@ public class Block {
         } catch (NoSuchAlgorithmException e) {
             e.printStackTrace();
         }
-        StringBuffer buffer = new StringBuffer();
+        StringBuilder builder = new StringBuilder();
         for(byte b : bytes) {
-            buffer.append(String.format("%02x", b));
+            builder.append(String.format("%02x", b));
         }
-        return buffer.toString();
+        return builder.toString();
     }
 
     public String mineTheBlock(int prefix) {
