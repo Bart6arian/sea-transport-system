@@ -18,7 +18,7 @@ import java.util.*;
 
 public class BlockRunner {
 
-    public static void main(String[] args) throws BlockchainInterruptionException, IllegalBlockchainCondition, InterruptedException {
+    public static void main(String[] args) throws BlockchainInterruptionException, IllegalBlockchainCondition {
 
         List<Block> chain = new ArrayList<>();
 
