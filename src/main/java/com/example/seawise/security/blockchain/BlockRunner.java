@@ -9,6 +9,7 @@ import com.example.seawise.logic.buisness.ship.domain.CargoSector;
 import com.example.seawise.logic.buisness.ship.domain.SectorMark;
 import com.example.seawise.logic.buisness.ship.domain.Ship;
 import com.example.seawise.logic.buisness.ship.domain.ShipType;
+import com.example.seawise.security.blockchain.database.DatabaseUnit;
 import com.example.seawise.security.exceptions.BlockchainInterruptionException;
 import com.example.seawise.security.exceptions.IllegalBlockchainCondition;
 

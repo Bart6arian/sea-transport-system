@@ -1,7 +1,6 @@
 package com.example.seawise.security.repository;
 
-import com.example.seawise.security.blockchain.Chain;
-import com.example.seawise.security.blockchain.DatabaseUnit;
+import com.example.seawise.security.blockchain.database.DatabaseUnit;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 

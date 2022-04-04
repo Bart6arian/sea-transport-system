@@ -1,5 +1,6 @@
-package com.example.seawise.security.blockchain;
+package com.example.seawise.security.blockchain.database;
 
+import com.example.seawise.security.blockchain.Chain;
 import com.example.seawise.security.exceptions.DatabaseUnitInterruptionWarning;
 import lombok.Getter;
 

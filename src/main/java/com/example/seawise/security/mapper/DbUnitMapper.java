@@ -1,6 +1,6 @@
 package com.example.seawise.security.mapper;
 
-import com.example.seawise.security.blockchain.DatabaseUnit;
+import com.example.seawise.security.blockchain.database.DatabaseUnit;
 import com.example.seawise.security.dto.DbUnitDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
