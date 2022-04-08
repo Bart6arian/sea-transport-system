@@ -1,4 +1,4 @@
-package com.example.seawise.security.blockchain.controller;
+package com.example.seawise.security.controller;
 
 import com.example.seawise.security.dto.BlockDto;
 import com.example.seawise.security.dto.ChainDto;
